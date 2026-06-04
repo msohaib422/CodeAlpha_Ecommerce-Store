@@ -1,5 +1,7 @@
 <h1 align="center"> Ecommerce Store </h1>
-<p align="center"> A professional, automated platform designed to help users generate, package, and export high-quality, comprehensive README documentation for their GitHub repositories. </p>
+<p align="center">
+A full-stack MERN eCommerce platform that enables users to browse products, manage shopping carts, place orders, and securely manage their accounts through a modern and responsive shopping experience.
+</p>
 
 <p align="center">
   <img alt="Build" src="https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge">
