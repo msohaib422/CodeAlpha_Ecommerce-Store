@@ -1,323 +1,378 @@
-<h1 align="center"> Ecommerce Store </h1>
-<p align="center">
-A full-stack MERN eCommerce platform that enables users to browse products, manage shopping carts, place orders, and securely manage their accounts through a modern and responsive shopping experience.
-</p>
+# 🛒 AlphaStore — Full-Stack E-Commerce Store
 
-<p align="center">
-  <img alt="Build" src="https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge">
-  <img alt="Issues" src="https://img.shields.io/badge/Issues-0%20Open-blue?style=for-the-badge">
-  <img alt="Contributions" src="https://img.shields.io/badge/Contributions-Welcome-orange?style=for-the-badge">
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge">
-</p>
-<!-- 
-  **Note:** These are static placeholder badges. Replace them with your project's actual badges.
-  You can generate your own at https://shields.io
--->
+> **Internship Project** · CodeAlpha · Built with the MERN Stack
+
+[![Node.js](https://img.shields.io/badge/Node.js-26%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-8.3.2-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white)](https://expressjs.com/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.5-7952B3?logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 
 ---
 
-### 📋 Table of Contents
-- [ℹ️ Overview](#-overview)
-- [✨ Key Features](#-key-features)
-- [🛠️ Tech Stack & Architecture](#-tech-stack--architecture)
-- [📁 Project Structure](#-project-structure)
-- [🚀 Getting Started](#-getting-started)
-- [🔧 Usage](#-usage)
-- [🤝 Contributing](#-contributing)
-- [📝 License](#-license)
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Live Demo](#-live-demo)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
+  - [Running the App](#running-the-app)
+  - [Seeding the Database](#seeding-the-database)
+- [Pages & Routes](#-pages--routes)
+- [Authentication & Authorization](#-authentication--authorization)
+- [Contributing](#-contributing)
+- [Acknowledgements](#-acknowledgements)
 
 ---
 
-### ℹ️ Overview
+## 🌟 Overview
 
-**Ecommerce Store** is an intelligent, automated documentation generation platform that transforms the tedious task of writing codebase documentation into a streamlined, interactive shopping-cart-style experience. 
+**AlphaStore** is a production-ready, full-stack e-commerce web application built as part of the **CodeAlpha Internship Program**. It provides a complete online shopping experience — from product browsing and cart management to checkout, order tracking, and an admin dashboard for store management.
 
-> Writing comprehensive, professional documentation for software projects is incredibly time-consuming and often inconsistent. Developers spend hours drafting README files from scratch, frequently omitting critical setup instructions or struggling with visual formatting. Many open-source and proprietary codebases remain under-documented, reducing developer adoption, hindering contributions, and obscuring real business value.
-
-By leveraging an interactive shopping and shipping workflow, **Ecommerce Store** allows users to browse documentation layouts, add specific structural configurations to their cart, customize user profiles, and "ship" (export) beautifully structured README files instantly. Built on a modular, component-based React architecture and backed by a robust Express REST API, the platform guarantees a frictionless user experience from configuration to download.
+The application follows a **RESTful architecture** with a React SPA on the frontend communicating with an Express/Node.js API backed by local MongoDB. Authentication is implemented with **JWT (JSON Web Tokens)** and passwords are hashed with **bcrypt**.
 
 ---
 
-### ✨ Key Features
+## 🚀 Live Demo
 
-The platform approaches documentation creation with a user-centric storefront metaphor, enabling developers to build, organize, and download markdown files effortlessly.
+> _Deploy link can be added here once hosted (e.g., Vercel + Render / Railway)_
 
-*   🚀 **Interactive Configuration Canvas (React Interface)**  
-    Design your custom README using an intuitive frontend. Manage your workspace seamlessly using custom layout options, tailored directly to your project's specifications.
-    
-*   📦 **The Documentation "Cart" Workflow**  
-    Treat your documentation sections as modular products. Browse various sections (such as Installation Guides, API Tables, Contribution Guidelines, and Badges), select the modules you require, and add them directly to your **Cart** for consolidated processing.
+| Role  | Email | Password |
+|-------|-------|----------|
+| Admin | `msohaib.store@gmail.com` | `12345678` |
+| User  | `jerry@gmail.com`  | `12345678` |
 
-*   🚚 **Flexible Delivery (Shipping UI)**  
-    Configure exact parameters for how you want your completed documentation packages delivered. Define target export options and configure formatting preferences inside the intuitive **Shipping** interface before generating the final product.
-
-*   👤 **Workspace & History Management (Profile & Register)**  
-    Create a secure developer account using the **Register** module. Save your active configurations, manage generated files, and look back at previous documentation builds via your personalized **Profile** dashboard.
-
-*   ⚡ **Robust Asset Handling (POST /api/upload)**  
-    Easily upload repository assets, architecture diagrams, and custom screenshots to the backend server. The `/api/upload` endpoint processes your project media files safely, saving them in a dedicated asset directory for immediate use in your markdown files.
-
-*   🏥 **Continuous Service Monitoring (GET /api/health)**  
-    Ensure uninterrupted document generation workflows. The integrated system health-check endpoint provides immediate, real-time feedback on server availability.
+> ⚠️ Seed the database first to get these demo accounts. See [Seeding the Database](#seeding-the-database).
 
 ---
 
-### 🛠️ Tech Stack & Architecture
+## ✨ Features
 
-The application implements a strict separation of concerns, utilizing a high-performance frontend build toolchain alongside an enterprise-grade RESTful API.
+### Customer Features
+- 🔍 **Product Browsing** — Search by keyword and filter by category in real time
+- 🛍️ **Shopping Cart** — Add, update quantity, and remove items with persistent state
+- 🔐 **Authentication** — Register & login with JWT-based session management
+- 📦 **Order Management** — Place orders, view order history, and track delivery status
+- ⭐ **Product Reviews** — Leave a verified review only after receiving a delivered order
+- 👤 **User Profile** — Update name, email, and password
 
-| Technology | Purpose | Why it was Chosen |
-| :--- | :--- | :--- |
-| **React** | Frontend User Interface | Enables a highly responsive, single-page UI for configuring templates, updating profile settings, managing the document cart, and finalizing shipping parameters. |
-| **Express** | Backend API Server | Offers a lightweight, fast, and unopinionated routing framework to handle template assets, process user requests, and manage system operations. |
+### Admin Features
+- 📊 **Admin Dashboard** — Overview of products, orders, and users
+- 🗂️ **Product CRUD** — Create, edit, and delete products with image upload support
+- 📋 **Order Management** — View all orders and mark them as paid or delivered
+- 👥 **User Management** — View all registered users
 
-#### Architectural Design Pattern
-The system is built on a **Component-Based Architecture** for the client and a decoupled **REST API Architecture** for the backend:
-1.  **Frontend Component Flow:** React state hooks manage the dynamic rendering of modular documentation sections. The user moves seamlessly from registration to the interactive page modules (Home, Profile, Cart, Shipping).
-2.  **Backend Controller Flow:** Express routes accept incoming data streams, manage uploaded media via middleware, and serve structure configurations back to the client.
+### Technical Highlights
+- JWT-based stateless authentication with role-based access control (User / Admin)
+- File upload via **Multer** with image type validation (JPG, PNG, WEBP)
+- Automatic stock deduction on order placement
+- Review gating — users can only review products from delivered orders
+- Global error-handling middleware on the Express server
+- React Context API for global state (cart, user session)
+- Responsive UI with Bootstrap 5 and Bootstrap Icons
 
 ---
 
-### 📁 Project Structure
+## 🛠️ Tech Stack
 
-This directory tree outlines the exact layout of the repository. Every directory has been mapped out to explain the separation between frontend views, backend data logic, and public configuration scripts.
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 19, React Router DOM, Bootstrap, Bootstrap Icons, Vite |
+| **Backend** | Node.js, Express, ES Modules (`"type": "module"`) |
+| **Database** | MongoDB + Mongoose ODM |
+| **Auth** | JSON Web Tokens (JWT), bcryptjs |
+| **File Upload** | Multer |
+
+---
+
+## 📁 Project Structure
 
 ```
-msohaib422-CodeAlpha_Ecommerce-Store-8346383/
-├── 📁 ecommerce-store/                    # Frontend React Application
-│   ├── 📄 package.json                    # Frontend package dependencies and build configurations
-│   ├── 📄 vite.config.js                  # Vite compiler configurations
-│   ├── 📄 eslint.config.js                # Linter configurations for code quality
-│   ├── 📄 package-lock.json               # Locked dependency tree for frontend builds
-│   ├── 📄 .gitignore                      # Git exclusion rules for frontend modules
-│   ├── 📄 index.html                      # Entry point HTML document
-│   └── 📁 src/                            # Source application directory
-│       ├── 📄 App.css                     # Global styles for component structures
-│       ├── 📄 App.jsx                     # Core application entry component & route manager
-│       ├── 📄 main.jsx                    # Vite app mounter
-│       ├── 📄 index.css                   # Global reset and typography stylesheet
-│       ├── 📁 assets/                     # Graphical assets
-│       │   ├── 📄 react.svg               # React official logo
-│       │   ├── 📄 hero.png                # Dynamic hero image used across home screens
-│       │   └── 📄 vite.svg                # Vite official compiler logo
-│       ├── 📁 pages/                      # Page components representing views
-│       │   ├── 📄 Profile.jsx             # User dashboard displaying saved configs and history
-│       │   ├── 📄 Register.jsx            # Account creation panel
-│       │   ├── 📄 Cart.jsx                # Selected document sections review panel
-│       │   ├── 📄 Shipping.jsx            # Export format and delivery parameters configurator
-│       │   ├── 📄 Login.jsx               # Security authentication panel
-│       │   ├── 📄 OrderDetails.jsx        # Summary of generated document bundles
-│       │   ├── 📄 PlaceOrder.jsx          # Compilation trigger page
-│       │   ├── 📄 ProductDetails.jsx      # Detail view for individual template blocks
-│       │   ├── 📄 AdminDashboard.jsx      # System admin controls for template metrics
-│       │   └── 📄 Home.jsx                # Main landing canvas to pick templates
-│       ├── 📁 context/                    # State management context
-│       │   └── 📄 StoreContext.jsx        # Global context provider for cart, users, and templates
-│       └── 📁 components/                 # Reusable UI component building blocks
-│           ├── 📄 Footer.jsx              # Global page footer with links
-│           ├── 📄 ProductCard.jsx         # Card template block representation
-│           ├── 📄 Header.jsx              # Application navigation bar
-│           └── 📄 ScrollToTop.jsx         # Helper component to manage scroll positions
-├── 📁 backend/                            # RESTful API Backend Application
-│   ├── 📄 package.json                    # Backend project metadata and package dependencies
-│   ├── 📄 server.js                       # Primary entry server script
-│   ├── 📄 seed.js                         # Database seed script for pre-populating templates
-│   ├── 📄 .env                            # Environment configuration definitions
-│   ├── 📄 package-lock.json               # Locked dependency tree for backend builds
-│   ├── 📁 routes/                         # Express API route endpoints
-│   │   ├── 📄 userRoutes.js               # User profile authentication route handlers
-│   │   ├── 📄 productRoutes.js            # Documentation template routes
-│   │   └── 📄 orderRoutes.js              # Export generation order routing logic
-│   ├── 📁 models/                         # Object data schemas
-│   │   ├── 📄 Order.js                    # Document generation details schema
-│   │   ├── 📄 User.js                     # User profile security schema
-│   │   └── 📄 Product.js                  # Document section component schema
-│   ├── 📁 uploads/                        # Server directory holding uploaded media files
-│   │   ├── 📄 image-1780550636981.jpeg    # Uploaded documentation diagram image
-│   │   └── 📄 image-1780496511731.jpeg    # Uploaded banner image
-│   └── 📁 middleware/                     # Express request interception files
-│       └── 📄 authMiddleware.js           # JsonWebToken authentication checker
-└── 📁 public/                             # Publicly accessible static assets
-    ├── 📄 icons.svg                       # Consolidated vector icons definition
-    └── 📄 favicon.svg                     # Browser header icon
+CodeAlpha_Ecommerce-Store/
+└── ecommerce-store/
+    ├── backend/                    # Express REST API
+    │   ├── middleware/
+    │   │   └── authMiddleware.js   # JWT protect & admin guards
+    │   ├── models/
+    │   │   ├── User.js             # User schema (bcrypt hashing)
+    │   │   ├── Product.js          # Product schema with reviews subdocument
+    │   │   └── Order.js            # Order schema with line items
+    │   ├── routes/
+    │   │   ├── userRoutes.js       # /api/users
+    │   │   ├── productRoutes.js    # /api/products
+    │   │   └── orderRoutes.js      # /api/orders
+    │   ├── uploads/                # Multer-uploaded product images
+    │   ├── seed.js                 # Database seeder script
+    │   ├── server.js               # App entry point
+    │   ├── .env                    # Environment variables (not committed)
+    │   └── package.json
+    │
+    ├── src/                        # React frontend (Vite)
+    │   ├── assets/                 # Static assets (images, SVGs)
+    │   ├── components/
+    │   │   ├── Header.jsx          # Navbar with cart badge & auth links
+    │   │   ├── Footer.jsx
+    │   │   ├── ProductCard.jsx     # Reusable product grid card
+    │   │   └── ScrollToTop.jsx     # Auto-scroll on route change
+    │   ├── context/
+    │   │   └── StoreContext.jsx    # Global cart & user state (React Context)
+    │   ├── pages/
+    │   │   ├── Home.jsx            # Product listing with search/filter
+    │   │   ├── ProductDetails.jsx  # Single product view & reviews
+    │   │   ├── Cart.jsx            # Shopping cart
+    │   │   ├── Login.jsx
+    │   │   ├── Register.jsx
+    │   │   ├── Shipping.jsx        # Shipping address form
+    │   │   ├── PlaceOrder.jsx      # Order summary & confirmation
+    │   │   ├── OrderDetails.jsx    # Order status & tracking
+    │   │   ├── Profile.jsx         # User profile & order history
+    │   │   └── AdminDashboard.jsx  # Full admin panel
+    │   ├── App.jsx                 # Route definitions
+    │   └── main.jsx                # React DOM entry point
+    │
+    ├── public/
+    ├── index.html
+    ├── vite.config.js
+    └── package.json
 ```
 
 ---
 
-### 🚀 Getting Started
+## 🏁 Getting Started
 
-Follow these instructions to set up a local copy of the environment and run both the Express backend server and the React frontend environment.
+### Prerequisites
 
-#### Prerequisites
-Ensure you have the following software packages installed on your development workstation:
-*   **Node.js** (LTS version highly recommended)
-*   **npm** (Bundled with Node.js installation)
+Ensure you have the following installed on your machine:
 
-#### Backend Installation & Setup
-
-1. Open your terminal and navigate to the `backend/` directory:
-   ```bash
-   cd backend
-   ```
-
-2. Install the verified backend dependencies:
-   ```bash
-   npm install
-   ```
-
-3. (Optional) Run the seed script to populate default layout templates and configurations:
-   ```bash
-   npm run seed
-   ```
-
-4. Boot up the REST API server:
-   ```bash
-   npm start
-   ```
-   *The Express server will initialize on the port defined in your environment files (typically port `5000` or fallback defaults).*
-
-#### Frontend Installation & Setup
-
-1. Open a new terminal instance and navigate to the `ecommerce-store/` directory:
-   ```bash
-   cd ecommerce-store
-   ```
-
-2. Install the frontend dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Launch the local Vite development server:
-   ```bash
-   npm run dev
-   ```
-   *The React UI application should now be accessible in your web browser at `http://localhost:5173` (or the port specified in your console logs).*
+| Tool | Version | Download |
+|------|---------|----------|
+| Node.js | `26.3.0` | [nodejs.org](https://nodejs.org/) |
+| npm | `11.16.0` | Bundled with Node.js |
+| MongoDB | `8.3.2` (Community Edition) | [mongodb.com](https://www.mongodb.com/) |
+| VSCode | `1.121.0`| [code.visualstudio.com](https://code.visualstudio.com/) |
 
 ---
 
-### 🔧 Usage
+### Installation
 
-#### 1. Verifying Backend Integrity
-Ensure the server is operating correctly before performing document generations. Send a GET request to the health endpoint:
+**1. Clone the repository**
 
 ```bash
-curl -X GET http://localhost:5000/api/health
+git clone https://github.com/<your-username>/CodeAlpha_Ecommerce-Store.git
+cd CodeAlpha_Ecommerce-Store/ecommerce-store
 ```
 
-**Expected JSON Response:**
-```json
-{
-  "status": "healthy",
-  "timestamp": "2023-10-27T10:14:00.000Z",
-  "uptime": "1245.89s"
-}
-```
-
-#### 2. Uploading Project Graphics
-Upload codebase graphics, architecture flowcharts, or markdown banner images using the upload endpoint:
+**2. Install backend dependencies**
 
 ```bash
-curl -X POST http://localhost:5000/api/upload \
-  -F "image=@/path/to/your/architecture-diagram.jpeg"
+cd backend
+npm install
 ```
 
-**Expected JSON Response:**
+**3. Install frontend dependencies**
+
+```bash
+cd ..           # back to ecommerce-store/
+npm install
+```
+
+---
+
+### Environment Variables
+
+The project uses a `.env` file located in the `backend/` directory.
+
+Update the values according to your environment:
+
+```env
+# backend/.env
+
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/ecommerce-store
+JWT_SECRET=supersecretkey_ecommerce_store_12345
+```
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `PORT` | Port the Express server listens on | `5000` |
+| `MONGO_URI` | MongoDB connection string | `mongodb://127.0.0.1:27017/ecommerce-store` |
+| `JWT_SECRET` | Secret key used to sign JWTs | *(required — change in production)* |
+
+> **⚠️ Security Note:** Never commit your `.env` file to version control. It is already listed in `.gitignore`.
+
+---
+
+### Running the App
+
+You will need **two terminal windows** — one for the backend and one for the frontend.
+
+**Terminal 1 — Start the Backend API**
+
+```bash
+cd ecommerce-store/backend
+npm start
+```
+
+The API server starts at: `http://localhost:5000`
+
+**Terminal 2 — Start the Frontend Dev Server**
+
+```bash
+cd ecommerce-store
+npm run dev
+```
+
+The React app starts at: `http://localhost:5173`
+
+> The frontend is pre-configured to proxy API requests to `http://localhost:5000` via `vite.config.js`.
+
+---
+
+### Seeding the Database
+
+The project ships with a seed script that populates the database with sample products and a default admin user.
+
+```bash
+cd backend
+npm run seed
+```
+
+This will insert sample products and create the following accounts:
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | `msohaib.store@gmail.com` | `12345678` |
+| User | `jerry@gmail.com` | `12345678` |
+
+To clear the database, you can modify `seed.js` to call `destroyData()` or drop the collection via MongoDB Compass.
+
+---
+
+### Users — `/api/users`
+
+| Method | Endpoint | Access | Description |
+|--------|----------|--------|-------------|
+| `POST` | `/api/users` | Public | Register a new user |
+| `POST` | `/api/users/login` | Public | Authenticate user & get token |
+| `GET` | `/api/users/profile` | Private | Get logged-in user profile |
+| `PUT` | `/api/users/profile` | Private | Update logged-in user profile |
+
+### Products — `/api/products`
+
+| Method | Endpoint | Access | Description |
+|--------|----------|--------|-------------|
+| `GET` | `/api/products` | Public | Get all products (supports `?keyword=` & `?category=`) |
+| `GET` | `/api/products/:id` | Public | Get product by ID |
+| `POST` | `/api/products` | Admin | Create a new product |
+| `PUT` | `/api/products/:id` | Admin | Update a product |
+| `DELETE` | `/api/products/:id` | Admin | Delete a product |
+| `POST` | `/api/products/:id/reviews` | Private | Submit a product review |
+
+### Orders — `/api/orders`
+
+| Method | Endpoint | Access | Description |
+|--------|----------|--------|-------------|
+| `POST` | `/api/orders` | Private | Create a new order |
+| `GET` | `/api/orders/myorders` | Private | Get current user's orders |
+| `GET` | `/api/orders` | Admin | Get all orders |
+| `GET` | `/api/orders/:id` | Private | Get order by ID |
+| `PUT` | `/api/orders/:id/pay` | Private | Mark order as paid |
+| `PUT` | `/api/orders/:id/deliver` | Admin | Mark order as delivered |
+
+### Uploads — `/api/upload`
+
+| Method | Endpoint | Access | Description |
+|--------|----------|--------|-------------|
+| `POST` | `/api/upload` | Admin | Upload a product image (multipart/form-data, field: `image`) |
+
+### Health Check
+
+```
+GET /api/health
+```
+
+Response:
 ```json
-{
-  "success": true,
-  "message": "Asset uploaded successfully",
-  "filePath": "/uploads/image-1780550636981.jpeg"
-}
+{ "status": "OK", "message": "E-commerce API is running" }
 ```
 
-#### 3. Frontend Document Design Workflow
-1.  **Register/Login:** Navigate to the `/register` page inside your web browser. Create an account to log configuration history.
-2.  **Browse Templates:** Use the main interface (`Home.jsx`) to view standard template cards.
-3.  **Build Your Cart:** Select desired document items (such as standard headings, badge layouts, and prerequisites sections) and click "Add to Cart".
-4.  **Confirm Preferences:** Navigate to the `/cart` page to review the overall markdown file layout structure.
-5.  **Configure Shipping:** Move to the `/shipping` screen to fill out your deployment parameters, formatting styles, and project metadata.
-6.  **Compile & Download:** Click on "Place Order" inside the interface to build and export your final custom `README.md` file.
+---
+
+## 🗺️ Pages & Routes
+
+| Path | Page | Access |
+|------|------|--------|
+| `/` | Home — product listing, search & category filter | Public |
+| `/product/:id` | Product detail, image, reviews | Public |
+| `/cart` | Shopping cart | Public |
+| `/login` | Login form | Public |
+| `/register` | Registration form | Public |
+| `/shipping` | Shipping address | Private |
+| `/placeorder` | Order summary & confirmation | Private |
+| `/order/:id` | Order details & status | Private |
+| `/profile` | User profile & order history | Private |
+| `/admin` | Admin dashboard — products, orders, users | Admin |
 
 ---
 
-### 🤝 Contributing
+## 🔐 Authentication & Authorization
 
-We welcome contributions to improve Ecommerce Store! Your input helps make this project better for everyone.
+This project uses **stateless JWT authentication**:
 
-### How to Contribute
+1. On login or registration, the server signs a JWT (expires in **30 days**) and returns it in the response body.
+2. The client stores the token in `localStorage` and attaches it to subsequent requests via the `Authorization: Bearer <token>` header.
+3. The `protect` middleware on the server decodes and verifies the token on every protected route.
+4. The `admin` middleware checks `user.isAdmin === true` for admin-only routes.
 
-1. **Fork the repository** - Click the 'Fork' button at the top right of this page
-2. **Create a feature branch** 
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Make your changes** - Improve code, documentation, or features
-4. **Test thoroughly** - Ensure all functionality works as expected
-   ```bash
-   npm test
-   ```
-5. **Commit your changes** - Write clear, descriptive commit messages
-   ```bash
-   git commit -m 'Add: Amazing new feature that does X'
-   ```
-6. **Push to your branch**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-7. **Open a Pull Request** - Submit your changes for review
-
-### Development Guidelines
-
-- ✅ Follow the existing code style and conventions
-- 📝 Add comments for complex logic and algorithms
-- 🧪 Write tests for new features and bug fixes
-- 📚 Update documentation for any changed functionality
-- 🔄 Ensure backward compatibility when possible
-- 🎯 Keep commits focused and atomic
-
-### Ideas for Contributions
-
-We're looking for help with:
-
-- 🐛 **Bug Fixes:** Report and fix bugs
-- ✨ **New Features:** Implement requested features from issues
-- 📖 **Documentation:** Improve README, add tutorials, create examples
-- 🎨 **UI/UX:** Enhance user interface and experience
-- ⚡ **Performance:** Optimize code and improve efficiency
-- 🌐 **Internationalization:** Add multi-language support
-- 🧪 **Testing:** Increase test coverage
-- ♿ **Accessibility:** Make the project more accessible
-
-### Code Review Process
-
-- All submissions require review before merging
-- Maintainers will provide constructive feedback
-- Changes may be requested before approval
-- Once approved, your PR will be merged and you'll be credited
-
-### Questions?
-
-Feel free to open an issue for any questions or concerns. We're here to help!
+```
+Client                    Server
+  |                         |
+  |  POST /api/users/login  |
+  |------------------------>|
+  |  { token, user data }   |
+  |<------------------------|
+  |                         |
+  |  GET /api/orders/myorders
+  |  Authorization: Bearer <token>
+  |------------------------>|
+  |  [ orders array ]       |
+  |<------------------------|
+```
 
 ---
 
-### 📝 License
+## 🤝 Contributing
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for complete details.
+This is an internship project, but contributions and suggestions are welcome.
 
-#### What this means:
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m "feat: add your feature"`
+4. Push to the branch: `git push origin feature/your-feature-name`
+5. Open a Pull Request
 
-- ✅ **Commercial use:** You can use this project commercially
-- ✅ **Modification:** You can modify the code
-- ✅ **Distribution:** You can distribute this software
-- ✅ **Private use:** You can use this project privately
-- ⚠️ **Liability:** The software is provided "as is", without warranty
-- ⚠️ **Trademark:** This license does not grant trademark rights
+Please follow [Conventional Commits](https://www.conventionalcommits.org/) for commit messages.
+
+---
+## 🙏 Acknowledgements
+
+- [CodeAlpha](https://codealpha.tech/) — for the internship opportunity and project guidelines
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
+- [React Documentation](https://react.dev/)
+- [Express.js Documentation](https://expressjs.com/)
+- [Bootstrap 5](https://getbootstrap.com/)
+- [Vite](https://vitejs.dev/)
 
 ---
 
-<p align="center">Made with ❤️ by the Ecommerce Store Team</p>
-<p align="center">
-  <a href="#">⬆️ Back to Top</a>
-</p>
+<div align="center">
+
+Made with ❤️ during the **CodeAlpha Internship Program**
+
+</div>
