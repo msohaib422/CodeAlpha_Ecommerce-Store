@@ -7,17 +7,7 @@ import Order from './models/Order.js';
 dotenv.config();
 
 const products = [
-  {
-    name: 'Quantum Pro Ultrabook',
-    image: 'https://images.unsplash.com/photo-1496181130204-755241544e35?auto=format&fit=crop&w=600&q=80',
-    description: 'High-performance ultrabook featuring an ultra-slim metallic chassis, 16GB RAM, 512GB NVMe SSD, and a gorgeous 14-inch QHD borderless display. Perfect for productivity and developers on the move.',
-    brand: 'QuantumTech',
-    category: 'Electronics',
-    price: 1299.99,
-    countInStock: 8,
-    rating: 4.8,
-    numReviews: 24,
-  },
+  
   {
     name: 'Zenith ANC Wireless Headphones',
     image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80',
@@ -121,8 +111,8 @@ const seedDatabase = async () => {
     // Create Customer
     const customerUser = await User.create({
       name: 'John Doe',
-      email: 'john@example.com',
-      password: 'password123',
+      email: 'jerry@gmail.com',
+      password: '12345678',
       isAdmin: false,
     });
 
