@@ -1,4 +1,4 @@
-# 🛒 ShopNow — Full-Stack E-Commerce Store
+# 🛒 AlphaStore — Full-Stack E-Commerce Store
 
 > **Internship Project** · CodeAlpha · Built with the MERN Stack
 
@@ -33,9 +33,9 @@
 
 ## 🌟 Overview
 
-**ShopNow** is a production-ready, full-stack e-commerce web application built as part of the **CodeAlpha Internship Program**. It provides a complete online shopping experience — from product browsing and cart management to checkout, order tracking, and an admin dashboard for store management.
+**AlphaStore** is a production-ready, full-stack e-commerce web application built as part of the **CodeAlpha Internship Program**. It provides a complete online shopping experience — from product browsing and cart management to checkout, order tracking, and an admin dashboard for store management.
 
-The application follows a **RESTful architecture** with a React SPA on the frontend communicating with an Express/Node.js API backed by MongoDB Atlas (or local MongoDB). Authentication is implemented with **JWT (JSON Web Tokens)** and passwords are hashed with **bcrypt**.
+The application follows a **RESTful architecture** with a React SPA on the frontend communicating with an Express/Node.js API backed by local MongoDB. Authentication is implemented with **JWT (JSON Web Tokens)** and passwords are hashed with **bcrypt**.
 
 ---
 
@@ -88,7 +88,6 @@ The application follows a **RESTful architecture** with a React SPA on the front
 | **Database** | MongoDB + Mongoose ODM |
 | **Auth** | JSON Web Tokens (JWT), bcryptjs |
 | **File Upload** | Multer |
-| **Dev Tooling** | ESLint, Vite HMR |
 
 ---
 
